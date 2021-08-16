@@ -28,11 +28,14 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+    counter1 contains the local variable to store the count, but counter2 uses a global variable 
   2. Which of the two uses a closure? How can you tell?
+  counter 1, because it has another function nested inside of it
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter1 is better when you have multiple pieces of data to be counted
+     counter2 is better when you are only counting 1 thing
 */
 
 // counter1 code
@@ -62,8 +65,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+
+  return Math.floor(Math.random() * 3);
+    
 }
 
 
@@ -81,8 +86,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inning, num){
+  let score = {
+    Home: 0,
+    Away: 0,
+
+  };
+
+
+  for (let i = 0; i < num; i++) {
+      score.Home += inning();
+      score.Away += inning();
+  }
+
+  return score;
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -90,8 +107,14 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inning) {
+  let score = {
+    Home: 0,
+    Away: 0,
+  };
+  score.Home += inning();
+  score.Away += inning();
+  return score;
 }
 
 
@@ -136,8 +159,13 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, num) {
+  let list = [];
+  for (let i = 0; i < num, i++;) {
+    list.push("Inning " + (i + 1) + ": Away " + getInningScore.Away + " - " + getInningScore.Home);
+  }
+
+  return list;
 }
 
 
