@@ -159,6 +159,7 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
+
 function scoreboard(getInningScore, inning, num) {
   let list = [];
   for (let i = 0; i < num, i++;) {
